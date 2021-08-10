@@ -33,12 +33,12 @@ class Notice
     private $registration_date;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="notices")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="notices")
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity=product::class, inversedBy="notices")
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="notices")
      */
     private $product;
 
@@ -83,24 +83,24 @@ class Notice
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getProduct(): ?product
+    public function getProduct(): ?Product
     {
         return $this->product;
     }
 
-    public function setProduct(?product $product): self
+    public function setProduct(?Product $product): self
     {
         $this->product = $product;
 

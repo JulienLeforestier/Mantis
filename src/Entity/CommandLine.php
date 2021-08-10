@@ -66,24 +66,24 @@ class CommandLine
         return $this;
     }
 
-    public function getCommand(): ?command
+    public function getCommand(): ?Command
     {
         return $this->command;
     }
 
-    public function setCommand(?command $command): self
+    public function setCommand(?Command $command): self
     {
         $this->command = $command;
 
         return $this;
     }
 
-    public function getProduct(): ?product
+    public function getProduct(): ?Product
     {
         return $this->product;
     }
 
-    public function setProduct(?product $product): self
+    public function setProduct(?Product $product): self
     {
         $this->product = $product;
 

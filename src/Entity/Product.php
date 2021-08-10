@@ -45,22 +45,22 @@ class Product
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity=category::class, inversedBy="products")
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="products")
      */
     private $category;
 
     /**
-     * @ORM\ManyToMany(targetEntity=mark::class, inversedBy="products")
+     * @ORM\ManyToMany(targetEntity=Mark::class, inversedBy="products")
      */
     private $mark;
 
     /**
-     * @ORM\ManyToMany(targetEntity=producer::class, inversedBy="products")
+     * @ORM\ManyToMany(targetEntity=Producer::class, inversedBy="products")
      */
     private $producer;
 
     /**
-     * @ORM\ManyToMany(targetEntity=type::class, inversedBy="products")
+     * @ORM\ManyToMany(targetEntity=Type::class, inversedBy="products")
      */
     private $type;
 
@@ -150,14 +150,14 @@ class Product
     }
 
     /**
-     * @return Collection|category[]
+     * @return Collection|Category[]
      */
     public function getCategory(): Collection
     {
         return $this->category;
     }
 
-    public function addCategory(category $category): self
+    public function addCategory(Category $category): self
     {
         if (!$this->category->contains($category)) {
             $this->category[] = $category;
@@ -166,7 +166,7 @@ class Product
         return $this;
     }
 
-    public function removeCategory(category $category): self
+    public function removeCategory(Category $category): self
     {
         $this->category->removeElement($category);
 
@@ -174,14 +174,14 @@ class Product
     }
 
     /**
-     * @return Collection|mark[]
+     * @return Collection|Mark[]
      */
     public function getMark(): Collection
     {
         return $this->mark;
     }
 
-    public function addMark(mark $mark): self
+    public function addMark(Mark $mark): self
     {
         if (!$this->mark->contains($mark)) {
             $this->mark[] = $mark;
@@ -190,7 +190,7 @@ class Product
         return $this;
     }
 
-    public function removeMark(mark $mark): self
+    public function removeMark(Mark $mark): self
     {
         $this->mark->removeElement($mark);
 
@@ -198,14 +198,14 @@ class Product
     }
 
     /**
-     * @return Collection|producer[]
+     * @return Collection|Producer[]
      */
     public function getProducer(): Collection
     {
         return $this->producer;
     }
 
-    public function addProducer(producer $producer): self
+    public function addProducer(Producer $producer): self
     {
         if (!$this->producer->contains($producer)) {
             $this->producer[] = $producer;
@@ -214,7 +214,7 @@ class Product
         return $this;
     }
 
-    public function removeProducer(producer $producer): self
+    public function removeProducer(Producer $producer): self
     {
         $this->producer->removeElement($producer);
 
@@ -222,14 +222,14 @@ class Product
     }
 
     /**
-     * @return Collection|type[]
+     * @return Collection|Type[]
      */
     public function getType(): Collection
     {
         return $this->type;
     }
 
-    public function addType(type $type): self
+    public function addType(Type $type): self
     {
         if (!$this->type->contains($type)) {
             $this->type[] = $type;
@@ -238,7 +238,7 @@ class Product
         return $this;
     }
 
-    public function removeType(type $type): self
+    public function removeType(Type $type): self
     {
         $this->type->removeElement($type);
 
