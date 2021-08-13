@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Producer{% endblock %}
+
+{% block body %}
+    <h1>Producer</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ producer.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ producer.title }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('producer_index') }}">back to list</a>
+
+    <a href="{{ path('producer_edit', {'id': producer.id}) }}">edit</a>
+
+    {{ include('producer/_delete_form.html.twig') }}
+{% endblock %}

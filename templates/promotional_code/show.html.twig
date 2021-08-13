@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PromotionalCode{% endblock %}
+
+{% block body %}
+    <h1>PromotionalCode</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ promotional_code.id }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ promotional_code.code }}</td>
+            </tr>
+            <tr>
+                <th>Reduction</th>
+                <td>{{ promotional_code.reduction }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('promotional_code_index') }}">back to list</a>
+
+    <a href="{{ path('promotional_code_edit', {'id': promotional_code.id}) }}">edit</a>
+
+    {{ include('promotional_code/_delete_form.html.twig') }}
+{% endblock %}

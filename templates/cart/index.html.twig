@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier
+{% endblock %}
+
+{% block body %}
+	<table class="table table-bordered table-striped">
+		<thead>
+			<th>Produit</th>
+			<th>Prix</th>
+			<th>Quantité</th>
+			<th>Total</th>
+			<th colspan="2">Actions</th>
+		</thead>
+		<tbody>
+			{% set amount = 0 %}
+			{% for line in cart %}
+				<tr>
+					<td>{{ line.product.title }}</td>
+					<td>{{ line.product.price }}&euro;</td>
+					<td>{{ line.quantity }}</td>
+					<td>{{ line.product.price * line.quantity }}&euro;</td>
+					<td>
+						<a href="{{ path('product_show', {'id': line.product.id}) }}">
+							<i class="fas fa-eye"></i>
+						</a>
+					</td>
+					<td>
+						<a href="{{ path('cart_delete', {'id': line.product.id}) }}">
+							<i class="fas fa-trash-alt"></i>
+						</a>
+					</td>
+					{% set amount = amount + line.product.price * line.quantity %}
+				</tr>
+			{% else %}
+				<td colspan="6">Aucun product dans le panier actuellement</td>
+			{% endfor %}
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2">Montant total de la commande :
+					{{ amount }}&euro;</td>
+				<td colspan="2">
+					<a href="{{ path('cart_confirm') }}">
+						Valider le panier
+					</a>
+				</td>
+				<td colspan="2">
+					<a href="{{ path('cart_empty') }}">
+						Vider le panier
+					</a>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+{% endblock %}

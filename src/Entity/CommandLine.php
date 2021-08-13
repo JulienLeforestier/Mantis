@@ -28,12 +28,12 @@ class CommandLine
     private $quantity;
 
     /**
-     * @ORM\ManyToOne(targetEntity=command::class, inversedBy="commandLines")
+     * @ORM\ManyToOne(targetEntity=Command::class, inversedBy="commandLines")
      */
     private $command;
 
     /**
-     * @ORM\ManyToOne(targetEntity=product::class, inversedBy="commandLines")
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="commandLines")
      */
     private $product;
 

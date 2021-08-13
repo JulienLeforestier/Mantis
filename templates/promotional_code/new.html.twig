@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New PromotionalCode{% endblock %}
+
+{% block body %}
+    <h1>Create new PromotionalCode</h1>
+
+    {{ include('promotional_code/_form.html.twig') }}
+
+    <a href="{{ path('promotional_code_index') }}">back to list</a>
+{% endblock %}
