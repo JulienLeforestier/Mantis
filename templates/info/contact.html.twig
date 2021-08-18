@@ -1,3 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
 <h1 class="mt-2">Contact</h1>
 <hr>
 
@@ -12,15 +17,17 @@
             <label for="messageContact" class="form-label">Message</label>
             <textarea class="form-control" id="messageContact" name="messageContact" placeholder="Laissez nous votre message" rows="5" required></textarea>
         </div>
+        <br>
         <button type="submit" class="btn btn-primary">Envoyer</button>
     </form>
 </div>
 <div class="container mt-4">
     <div class="col-sm-12 text-center">
-        <h2>Adresse et Téléphone</h2>
-        <h3>Mantis</h3>
-        <p>300 Boulevard de Sébastopol, 75003 Paris, France</p>
-        <p>+33 (0)1 75 00 00 00 </p>
-        <p><a href="">contact@mantis.com</a></p>
+        <h2>Adresse et Téléphone</h2><br>
+        <h4>Mantis</h4><br>
+        <p>60 rue Lafayette, 76100 Rouen, France</p>
+        <p>+33 (0)6 87 49 86 46 </p>
+        <p><a href="">leforestier.julien@gmail.com</a></p>
     </div>
 </div>
+{% endblock %}

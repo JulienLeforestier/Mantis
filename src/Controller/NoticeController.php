@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/notice')]
+#[Route('/admin/notice')]
 class NoticeController extends AbstractController
 {
     #[Route('/', name: 'notice_index', methods: ['GET'])]

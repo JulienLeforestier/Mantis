@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/promotional/code')]
+#[Route('/admin/promotional_code')]
 class PromotionalCodeController extends AbstractController
 {
     #[Route('/', name: 'promotional_code_index', methods: ['GET'])]

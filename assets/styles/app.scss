@@ -1,6 +1,23 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css"; 
 @import "~bootstrap/scss/bootstrap";
 
-body {
-    background-color: lightgray;
+*{
+	box-sizing: border-box;
+}
+body{
+	font-family: "Cabrion";
+    background-color: #638dfe;
+} 
+html{
+    min-height: 100vh;
+    position: relative;
+    padding: 60px 0;
+}
+h1, h2, h3, h4{
+	text-align: center;
+	font-family: "Soria";
+}
+footer{
+    position: absolute;
+    bottom: 0;
 }
