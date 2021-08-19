@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Producer{% endblock %}
+{% block title %}Édition de producteur{% endblock %}
 
 {% block body %}
-    <h1>Edit Producer</h1>
+	<h1>Édition de producteur</h1>
 
-    {{ include('producer/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('producer_index') }}">back to list</a>
-
-    {{ include('producer/_delete_form.html.twig') }}
+	{{ include('producer/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    <br>
+	<a href="{{ path('producer_index') }}" class="btn btn-primary">Retour</a>
+	<br><br>
+	{{ include('producer/_delete_form.html.twig') }}
+    <br>
 {% endblock %}

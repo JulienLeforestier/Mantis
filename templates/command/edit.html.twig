@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Command{% endblock %}
+{% block title %}Édition de commande{% endblock %}
 
 {% block body %}
-    <h1>Edit Command</h1>
+	<h1>Édition de commande</h1>
 
-    {{ include('command/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('command_index') }}">back to list</a>
-
-    {{ include('command/_delete_form.html.twig') }}
+	{{ include('command/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    <br>
+	<a href="{{ path('command_index') }}" class="btn btn-primary">Retour</a>
+	<br><br>
+	{{ include('command/_delete_form.html.twig') }}
+    <br>
 {% endblock %}

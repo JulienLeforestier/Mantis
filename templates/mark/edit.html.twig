@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Mark{% endblock %}
+{% block title %}Édition d'éditeur{% endblock %}
 
 {% block body %}
-    <h1>Edit Mark</h1>
+	<h1>Édition d'éditeur</h1>
 
-    {{ include('mark/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('mark_index') }}">back to list</a>
-
-    {{ include('mark/_delete_form.html.twig') }}
+	{{ include('mark/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    <br>
+	<a href="{{ path('mark_index') }}" class="btn btn-primary">Retour</a>
+	<br><br>
+	{{ include('mark/_delete_form.html.twig') }}
+    <br>
 {% endblock %}

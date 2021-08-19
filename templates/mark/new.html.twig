@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Mark{% endblock %}
+{% block title %}Nouvel éditeur{% endblock %}
 
 {% block body %}
-    <h1>Create new Mark</h1>
+	<h1>Créer un nouvel éditeur</h1>
 
-    {{ include('mark/_form.html.twig') }}
-
-    <a href="{{ path('mark_index') }}">back to list</a>
+	{{ include('mark/_form.html.twig') }}
+    <br>
+	<a href="{{ path('mark_index') }}" class="btn btn-primary">Retour</a>
+    <br>
 {% endblock %}

@@ -2,10 +2,13 @@
 
 namespace App\Form;
 
+use App\Entity\User;
 use App\Entity\PromotionalCode;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class PromotionalCodeType extends AbstractType
 {
@@ -13,8 +16,16 @@ class PromotionalCodeType extends AbstractType
     {
         $builder
             ->add('code')
-            ->add('reduction')
-            ->add('user')
+            ->add('reduction', NumberType::class, [
+                "label" => "Réduction en %"
+            ])
+            ->add('user', EntityType::class, [
+                "label" => "Membre",
+                "class" => User::class,
+                "choice_label" => "email",
+                "multiple" => false,
+                "expanded" => true
+            ])
         ;
     }
 

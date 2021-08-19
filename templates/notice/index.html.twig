@@ -21,7 +21,7 @@
                 <td>{{ notice.id }}</td>
                 <td>{{ notice.comment }}</td>
                 <td>{{ notice.note }}</td>
-                <td>{{ notice.registrationDate ? notice.registrationDate|date('Y-m-d') : '' }}</td>
+                <td>{{ notice.registrationDate ? notice.registrationDate|date('d-m-Y') : '' }}</td>
                 <td>
                     <a href="{{ path('notice_show', {'id': notice.id}) }}">show</a>
                     <a href="{{ path('notice_edit', {'id': notice.id}) }}">edit</a>

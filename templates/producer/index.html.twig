@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Producer index{% endblock %}
+{% block title %}Producteurs{% endblock %}
 
 {% block body %}
-    <h1>Producer index</h1>
+    <h1>Producteurs</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
-                <th>actions</th>
+                <th>Nom</th>
+                <th colspan="2">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +19,24 @@
                 <td>{{ producer.id }}</td>
                 <td>{{ producer.title }}</td>
                 <td>
-                    <a href="{{ path('producer_show', {'id': producer.id}) }}">show</a>
-                    <a href="{{ path('producer_edit', {'id': producer.id}) }}">edit</a>
+                    <a href="{{ path('producer_show', {'id': producer.id}) }}">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('producer_edit', {'id': producer.id}) }}">
+                        <i class="fas fa-edit"></i>
+                    </a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="4">Aucun résultat trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('producer_new') }}">Create new</a>
+    <a href="{{ path('producer_new') }}" class="btn btn-primary">Nouveau producteur</a>
+    <br><br>
 {% endblock %}

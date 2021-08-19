@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Producer{% endblock %}
+{% block title %}Producteur{% endblock %}
 
 {% block body %}
-    <h1>Producer</h1>
+    <h1>Producteur</h1>
 
     <table class="table">
         <tbody>
@@ -12,15 +12,16 @@
                 <td>{{ producer.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th>Titre</th>
                 <td>{{ producer.title }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('producer_index') }}">back to list</a>
+	<a href="{{ path('producer_index') }}" class="btn btn-primary">Retour</a>
 
-    <a href="{{ path('producer_edit', {'id': producer.id}) }}">edit</a>
-
+	<a href="{{ path('producer_edit', {'id': producer.id}) }}" class="btn btn-primary">Éditer</a>
+	<br><br>
     {{ include('producer/_delete_form.html.twig') }}
+    <br>
 {% endblock %}

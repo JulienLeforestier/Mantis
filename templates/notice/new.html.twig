@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Notice{% endblock %}
+{% block title %}Nouvel avis{% endblock %}
 
 {% block body %}
-    <h1>Create new Notice</h1>
+	<h1>Créer un nouvel avis</h1>
 
-    {{ include('notice/_form.html.twig') }}
-
-    <a href="{{ path('notice_index') }}">back to list</a>
+	{{ include('notice/_form.html.twig') }}
+    <br>
+	<a href="{{ path('notice_index') }}" class="btn btn-primary">Retour</a>
+    <br>
 {% endblock %}

@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit PromotionalCode{% endblock %}
+{% block title %}Édition de code promotionnel
+{% endblock %}
 
 {% block body %}
-    <h1>Edit PromotionalCode</h1>
+	<h1>Édition de code promotionnel</h1>
 
-    {{ include('promotional_code/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('promotional_code_index') }}">back to list</a>
-
-    {{ include('promotional_code/_delete_form.html.twig') }}
+	{{ include('promotional_code/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    <br>
+	<a href="{{ path('promotional_code_index') }}" class="btn btn-primary">Retour</a>
+	<br><br>
+	{{ include('promotional_code/_delete_form.html.twig') }}
+    <br>
 {% endblock %}

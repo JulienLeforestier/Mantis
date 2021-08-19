@@ -24,13 +24,14 @@
 				<th>Stock</th>
 				<td>{{ product.stock }}</td>
 			</tr>
-			{# <tr>
+			<tr>
 				<th>Photo</th>
 				<td><img class="img-show" src="{{ url_images_products ~ product.picture }}" alt="{{ product.title }}"></td>
-			</tr> #}
+			</tr>
 		</tbody>
 	</table>
 
 	<a href="{{ path("cart_add", {id: product.id}) }}" class="btn btn-primary">Ajouter au panier</a>
 	<a href="{{ path('home') }}" class="btn btn-primary">Retour</a>
+	<br>
 {% endblock %}

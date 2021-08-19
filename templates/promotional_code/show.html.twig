@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}PromotionalCode{% endblock %}
+{% block title %}Code promotionnel{% endblock %}
 
 {% block body %}
-    <h1>PromotionalCode</h1>
+    <h1>Code promotionnel</h1>
 
     <table class="table">
         <tbody>
@@ -11,20 +11,25 @@
                 <th>Id</th>
                 <td>{{ promotional_code.id }}</td>
             </tr>
+              <tr>
+                <th>Membre</th>
+                <td>{{ promotional_code.user.name }} &nbsp; {{ promotional_code.user.firstName }} - {{ promotional_code.user.email }}</td>
+            </tr>
             <tr>
                 <th>Code</th>
                 <td>{{ promotional_code.code }}</td>
             </tr>
             <tr>
-                <th>Reduction</th>
+                <th>Réduction en %</th>
                 <td>{{ promotional_code.reduction }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('promotional_code_index') }}">back to list</a>
+    <a href="{{ path('promotional_code_index') }}" class="btn btn-primary">Retour</a>
 
-    <a href="{{ path('promotional_code_edit', {'id': promotional_code.id}) }}">edit</a>
-
+	<a href="{{ path('promotional_code_edit', {'id': promotional_code.id}) }}" class="btn btn-primary">Éditer</a>
+	<br><br>
     {{ include('promotional_code/_delete_form.html.twig') }}
+    <br>
 {% endblock %}

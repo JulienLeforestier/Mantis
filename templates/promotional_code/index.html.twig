@@ -1,37 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}PromotionalCode index{% endblock %}
+{% block title %}Codes promotionnels{% endblock %}
 
 {% block body %}
-    <h1>PromotionalCode index</h1>
+    <h1>Codes promotionnels</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Nom du membre</th>
+                <th>Prénom</th>
+                <th>Email</th>
                 <th>Code</th>
-                <th>Reduction</th>
-                <th>actions</th>
+                <th>Réduction</th>
+                <th colspan="2">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for promotional_code in promotional_codes %}
             <tr>
                 <td>{{ promotional_code.id }}</td>
+                <td>{{ promotional_code.user.name }}</td>
+                <td>{{ promotional_code.user.firstName }}</td>
+                <td>{{ promotional_code.user.email }}</td>
                 <td>{{ promotional_code.code }}</td>
                 <td>{{ promotional_code.reduction }}</td>
                 <td>
-                    <a href="{{ path('promotional_code_show', {'id': promotional_code.id}) }}">show</a>
-                    <a href="{{ path('promotional_code_edit', {'id': promotional_code.id}) }}">edit</a>
+                    <a href="{{ path('promotional_code_show', {'id': promotional_code.id}) }}">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('promotional_code_edit', {'id': promotional_code.id}) }}">
+                        <i class="fas fa-edit"></i>
+                    </a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="8">Aucun résultat trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('promotional_code_new') }}">Create new</a>
+    <a href="{{ path('promotional_code_new') }}" class="btn btn-primary">Nouveau code promotionnel</a>
+    <br><br>
 {% endblock %}
