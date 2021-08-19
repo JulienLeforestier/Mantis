@@ -76,7 +76,7 @@ class CartController extends AbstractController
         $commande->setStatus("en attente");
         $montant = 0;
         foreach ($cart as $line) {
-            $montant += $line["product"]->getPrix() * $line["quantity"];
+            $montant += $line["product"]->getPrice() * $line["quantity"];
             $line_commande = new CommandLine;
             $line_commande->setCommand($commande);
             // Il ne faut surtout pas utiliser $line["product"] dans setproduct

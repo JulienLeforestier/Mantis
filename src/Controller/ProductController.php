@@ -28,12 +28,27 @@ class ProductController extends AbstractController
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($product);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $file = $form->get("picture")->getData();
+                if ($file) {
+                    $fileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                    $fileName .= "_" . time();
+                    $fileName .= "." . $file->guessExtension();
+                    $fileName = str_replace(' ', '_', $fileName);
+                    $destination = $this->getParameter("dossier_images") . "products";
+                    $file->move($destination, $fileName);
+                    $product->setPicture($fileName);
+                }
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($product);
+                $entityManager->flush();
+                $this->addFlash("success", "Le nouveau produit a bien été enregistré");
+                return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
+                
+            } else {
+                $this->addFlash("danger", "Le formulaire n'est pas valide");
+            }
         }
 
         return $this->renderForm('product/new.html.twig', [
@@ -57,7 +72,17 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($file = $form->get("picture")->getData()) {
+                $fileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME) . "_" . time() . "." . $file->guessExtension();
+                $fileName = str_replace(' ', '_', $fileName);
+                $destination = $this->getParameter("dossier_images") . "products";
+                $file->move($destination, $fileName);
+                $oldFile = $destination . "/" . $product->getPicture();
+                if (file_exists($oldFile) && $product->getPicture()) unlink($oldFile);
+                $product->setPicture($fileName);
+            }
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash("success", "Le produit a bien été modifié");
 
             return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -72,9 +97,13 @@ class ProductController extends AbstractController
     public function delete(Request $request, Product $product): Response
     {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
+            $fileName = $product->getPicture();
+            $oldFile = $this->getParameter("dossier_images") . "products" . "/" . $fileName;
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($product);
             $entityManager->flush();
+            if (file_exists($oldFile) && $fileName) unlink($oldFile);
+            $this->addFlash("success", "Le produit a bien été supprimé");
         }
 
         return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);

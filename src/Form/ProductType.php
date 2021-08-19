@@ -28,22 +28,20 @@ class ProductType extends AbstractType
                 "label" => "Prix"
             ])
             ->add('stock')
-            // ->add('picture', FileType::class, [
-            //     "mapped" => false,
-            //     "required" => false,
-            //     "constraints" => [
-            //         new File([
-            //             "mimeTypes" => ["image/gif", "image/jpeg", "image/png"],
-            //             "mimeTypesMessage" => "Les formats autorisés sont gif, jpg et png",
-            //             "maxSize" => "2048k",
-            //             "maxSizeMessage" => "Le fichier ne doit pas faire plus de 2Mo"
-            //         ])
-            //     ]
-            // ])
-            ->add('picture')
-            ->add('description', TextType::class, [
-                "label" => "Déscription"
+            ->add('picture', FileType::class, [
+                "label" => "Image",
+                "mapped" => false,
+                "required" => false,
+                "constraints" => [
+                    new File([
+                        "mimeTypes" => ["image/gif", "image/jpeg", "image/png"],
+                        "mimeTypesMessage" => "Les formats autorisés sont gif, jpg et png",
+                        "maxSize" => "2048k",
+                        "maxSizeMessage" => "Le fichier ne doit pas faire plus de 2Mo"
+                    ])
+                ]
             ])
+            ->add('description')
             ->add('category', EntityType::class, [
                 "label" => "Catégorie",
                 "class" => Category::class,

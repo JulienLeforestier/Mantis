@@ -9,29 +9,42 @@
 	<table class="table">
 		<tbody>
 			<tr>
-				<th>Id</th>
-				<td>{{ product.id }}</td>
-			</tr>
-			<tr>
-				<th>Titre</th>
-				<td>{{ product.title }}</td>
-			</tr>
-			<tr>
-				<th>Prix</th>
-				<td>{{ product.price }}&euro;</td>
-			</tr>
-			<tr>
-				<th>Stock</th>
-				<td>{{ product.stock }}</td>
-			</tr>
-			<tr>
-				<th>Photo</th>
-				<td><img class="img-show" src="{{ url_images_products ~ product.picture }}" alt="{{ product.title }}"></td>
+				<th><img class="img-show" src="{{ url_images_products ~ product.picture }}" alt="{{ product.title }}" width="300"></th>
+				<td>
+				Description :
+				{{ product.description }}
+				<br><br>
+				Genre(s) :
+				{% for type in product.type %}
+					{{ type.title }}
+				{% endfor %}
+				<br><br>
+				Catégorie(s) :
+				{% for category in product.category %}
+					{{ category.title }}
+				{% endfor %}
+				<br><br>
+				Éditeur(s) :
+				{% for mark in product.mark %}
+					{{ mark.title }}
+				{% endfor %}
+				<br><br>
+				Producteur(s) :
+				{% for producer in product.producer %}
+					{{ producer.title }}
+				{% endfor %}
+				<br><br>
+				Stock : 
+				{{ product.stock }}
+				<br><br>
+				Prix :
+				{{ product.price }}&euro;
+				</td>
 			</tr>
 		</tbody>
 	</table>
 
 	<a href="{{ path("cart_add", {id: product.id}) }}" class="btn btn-primary">Ajouter au panier</a>
 	<a href="{{ path('home') }}" class="btn btn-primary">Retour</a>
-	<br>
+	<br><br>
 {% endblock %}

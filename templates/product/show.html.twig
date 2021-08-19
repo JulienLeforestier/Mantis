@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <th>Prix</th>
-                <td>{{ product.price }}</td>
+                <td>{{ product.price }}&euro;</td>
             </tr>
             <tr>
                 <th>Stock</th>
@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <th>Image</th>
-                <td>{{ product.picture }}</td>
+                <td><img class="img" src="{{ url_images_products ~ product.picture }}" alt="{{ product.title }}" width="300"></td>
             </tr>
             <tr>
                 <th>Description</th>

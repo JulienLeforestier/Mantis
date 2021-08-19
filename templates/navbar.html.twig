@@ -1,4 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark text-light">
+	&emsp;
 	<a class="navbar-brand" href="{{ path("home") }}">Mantis</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -34,18 +35,11 @@
 				</li>
 			{% endif %}
 			{% if is_granted('ROLE_ADMIN') %}
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Gestion
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path("admin") }}">
+						<i class="fas fa-users-cog"></i>
+						Admin
 					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="{{ path("user_index") }}">Membres</a>
-						<a class="dropdown-item" href="{{ path("product_index") }}">Produits</a>
-						<a class="dropdown-item" href="{{ path("command_index") }}">Commandes</a>
-						<a class="dropdown-item" href="{{ path("category_index") }}">Catégories</a>
-						<a class="dropdown-item" href="{{ path("type_index") }}">Types</a>
-						<a class="dropdown-item" href="{{ path("mark_index") }}">Marques</a>
-					</div>
 				</li>
 			{% endif %}
 		</ul>

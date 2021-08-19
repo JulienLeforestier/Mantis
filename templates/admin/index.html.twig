@@ -1,0 +1,20 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration
+{% endblock %}
+
+{% block body %}
+    <a class="" href="{{ path("user_index") }}">Membres</a>
+    <br>
+    <a class="" href="{{ path("product_index") }}">Produits</a>
+    <br>
+    <a class="" href="{{ path("command_index") }}">Commandes</a>
+    <br>
+    <a class="" href="{{ path("category_index") }}">Catégories</a>
+    <br>
+    <a class="" href="{{ path("type_index") }}">Types</a>
+    <br>
+    <a class="" href="{{ path("mark_index") }}">Marques</a>
+{% endblock %}
+	
