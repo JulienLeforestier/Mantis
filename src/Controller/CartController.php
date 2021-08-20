@@ -70,27 +70,26 @@ class CartController extends AbstractController
     public function confirm(Session $session, EntityManagerInterface $em, productRepository $productRepository): Response
     {
         $cart = $session->get("cart");
-        $commande = new Command;
-        $commande->setUser($this->getUser());
-        $commande->setRegistrationDate(new \DateTime());
-        $commande->setStatus("en attente");
-        $montant = 0;
+        $command = new Command;
+        $command->setUser($this->getUser());
+        $command->setRegistrationDate(new \DateTime());
+        $command->setStatus("en attente");
+        $amount = 0;
+        $totalAmount = 0;
         foreach ($cart as $line) {
-            $montant += $line["product"]->getPrice() * $line["quantity"];
-            $line_commande = new CommandLine;
-            $line_commande->setCommand($commande);
-            // Il ne faut surtout pas utiliser $line["product"] dans setproduct
-            // L'entity manager essaierait de créer un nouveau product bien que $line["product"] ait un id non null
-            // Donc on récupère le product avec le productRepository
+            $amount = $line["product"]->getPrice() * $line["quantity"];
+            $totalAmount += $line["product"]->getPrice() * $line["quantity"];
+            $command_line = new CommandLine;
+            $command_line->setCommand($command);
             $product = $productRepository->find($line["product"]->getId());
-            $line_commande->setproduct($product);
-            $line_commande->setQuantity($line["quantity"]);
-            $line_commande->setPrice($montant);
-            $em->persist($line_commande);
+            $command_line->setproduct($product);
+            $command_line->setQuantity($line["quantity"]);
+            $command_line->setPrice($amount);
+            $em->persist($command_line);
             $product->setStock($product->getStock() - $line["quantity"]);
         }
-        $commande->setAmount($montant);
-        $em->persist($commande);
+        $command->setAmount($totalAmount);
+        $em->persist($command);
         $em->flush();
         $session->remove("cart");
 

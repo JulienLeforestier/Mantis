@@ -10,10 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/admin/command')]
 class CommandController extends AbstractController
 {
-    #[Route('/', name: 'command_index', methods: ['GET'])]
+    #[Route('/admin/command/', name: 'command_index', methods: ['GET'])]
     public function index(CommandRepository $commandRepository): Response
     {
         return $this->render('command/index.html.twig', [
@@ -21,7 +20,7 @@ class CommandController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'command_new', methods: ['GET', 'POST'])]
+    #[Route('/admin/command/new', name: 'command_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
         $command = new Command();
@@ -42,7 +41,7 @@ class CommandController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'command_show', methods: ['GET'])]
+    #[Route('/command/{id}', name: 'command_show', methods: ['GET'])]
     public function show(Command $command): Response
     {
         return $this->render('command/show.html.twig', [
@@ -50,7 +49,7 @@ class CommandController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'command_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/command/{id}/edit', name: 'command_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Command $command): Response
     {
         $form = $this->createForm(CommandType::class, $command);
@@ -68,7 +67,7 @@ class CommandController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'command_delete', methods: ['POST'])]
+    #[Route('/admin/command/{id}', name: 'command_delete', methods: ['POST'])]
     public function delete(Request $request, Command $command): Response
     {
         if ($this->isCsrfTokenValid('delete'.$command->getId(), $request->request->get('_token'))) {

@@ -8,10 +8,6 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Amount</th>
-                <td>{{ command.amount }}</td>
-            </tr>
-            <tr>
                 <th>Date d'enregistrement</th>
                 <td>{{ command.registrationDate ? command.registrationDate|date('d-m-Y') : '' }}</td>
             </tr>
@@ -19,13 +15,27 @@
                 <th>Statut</th>
                 <td>{{ command.status }}</td>
             </tr>
+            {% for commandLine in command.commandLines %}
+                <tr>
+                    <th>{{ commandLine.product.title }} x {{ commandLine.quantity }}</th>
+                    <td>{{ commandLine.price }}&euro; (dont TVA : {{ (commandLine.price * 20 / 100) | round(2, 'floor') }}&euro;)</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <th>Montant total</th>
+                <td>{{ command.amount }}&euro; (dont TVA : {{ (command.amount * 20 / 100) | round(2, 'floor') }}&euro;)</td>
+            </tr>
         </tbody>
     </table>
 
-	<a href="{{ path('command_index') }}" class="btn btn-primary">Retour</a>
+    <a href="{{ path('invoice', {'id': command.id}) }}"><i class="fas fa-file-pdf"></i> Imprimer une facture <i class="fas fa-file-pdf"></i></a>
+    <br><br>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('command_index') }}" class="btn btn-primary">Retour</a>
 
-	<a href="{{ path('command_edit', {'id': command.id}) }}" class="btn btn-primary">Éditer</a>
-	<br><br>
-    {{ include('command/_delete_form.html.twig') }}
+        <a href="{{ path('command_edit', {'id': command.id}) }}" class="btn btn-primary">Éditer</a>
+        <br><br>
+        {{ include('command/_delete_form.html.twig') }}
+    {% endif %}
     <br>
 {% endblock %}

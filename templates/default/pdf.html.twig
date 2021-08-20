@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Facture</title>
+		<style type="text/css">
+			* {
+				font-family: Verdana, Arial, sans-serif;
+			}
+			table {
+				font-size: x-small;
+			}
+			tfoot tr td {
+				font-weight: bold;
+				font-size: x-small;
+			}
+			.gray {
+				background-color: lightgray
+			}
+		</style>
+	</head>
+	<body>
+
+		<table width="100%">
+			<tr>
+				<td valign="top">Facture n°{{ command.id }}</td>
+				<td align="right">
+					<h3>Mantis</h3>
+					<pre>
+                        60 rue Lafayette 
+                        76100 Rouen
+                        leforestier.julien@gmail.com
+                        06.87.49.86.46
+                    </pre>
+                </td>
+            </tr>
+		</table>
+
+		<table width="100%">
+			<tr>
+				<td>
+					<strong>De :</strong>
+					Mantis
+                </td>
+				<td>
+					<strong>À :</strong>
+					{{ command.user.name ~ ' ' ~ command.user.firstName }}
+                </td>
+			</tr>
+		</table>
+		<br/>
+		<table width="100%">
+			<thead style="background-color: lightgray;">
+				<tr>
+					<th>#</th>
+					<th>Description</th>
+					<th>Quantité</th>
+					<th>Prix unitaire &euro;</th>
+					<th>Total &euro;</th>
+				</tr>
+			</thead>
+			<tbody>
+                {% for commandLine in command.commandLines %}
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>{{ commandLine.product.title }}</td>
+                        <td align="right">{{ commandLine.quantity }}</td>
+                        <td align="right">{{ commandLine.price }}</td>
+                        <td align="right">{{ commandLine.price * commandLine.quantity }}</td>
+                    </tr>
+	            {% endfor %}
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3"></td>
+					<td align="right">Sous-total HT &euro;</td>
+					<td align="right">{{ (command.amount - (command.amount * 20 / 100)) | round(2, 'floor') }}</td>
+				</tr>
+				<tr>
+					<td colspan="3"></td>
+					<td align="right">TVA &euro;</td>
+					<td align="right">{{ (command.amount * 20 / 100) | round(2, 'floor') }}</td>
+				</tr>
+				<tr>
+					<td colspan="3"></td>
+					<td align="right">Total TTC &euro;</td>
+					<td align="right" class="gray">{{ command.amount }}</td>
+				</tr>
+			</tfoot>
+		</table>
+	</body>
+</html>

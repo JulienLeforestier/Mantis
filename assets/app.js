@@ -14,3 +14,6 @@ import './styles/app.scss';
 const $ = require('jquery');
 global.$ = global.jQuery = $;
 require('bootstrap');
+
+//fonction d'impression onClick sur l'id print = ('Imprimer la page' dans le footer)
+document.getElementById('print').addEventListener('click', function () { window.print(); });

@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon panier
-{% endblock %}
+{% block title %}Mon panier{% endblock %}
 
 {% block body %}
 	<table class="table table-bordered table-striped">
@@ -17,7 +16,7 @@
 			{% for line in cart %}
 				<tr>
 					<td>{{ line.product.title }}</td>
-					<td>{{ line.product.price }}&euro;</td>
+					<td>{{ line.product.price }}&euro; (dont TVA : {{ (line.product.price * 20 / 100) | round(2, 'floor') }}&euro;)</td>
 					<td>{{ line.quantity }}</td>
 					<td>{{ line.product.price * line.quantity }}&euro;</td>
 					<td>
@@ -39,7 +38,7 @@
 		<tfoot>
 			<tr>
 				<td colspan="2">Montant total de la commande :
-					{{ amount }}&euro;</td>
+					{{ amount }}&euro; (dont TVA : {{ (amount * 20 / 100) | round(2, 'floor') }}&euro;)</td>
 				<td colspan="2">
 					<a href="{{ path('cart_confirm') }}">
 						Valider le panier

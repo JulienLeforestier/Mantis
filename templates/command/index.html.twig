@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Membre</th>
                 <th>Montant</th>
                 <th>Date d'enregistrement</th>
                 <th>Statut</th>
@@ -19,7 +20,8 @@
         {% for command in commands %}
             <tr>
                 <td>{{ command.id }}</td>
-                <td>{{ command.amount }}</td>
+                <td>{{ command.user.email }}</td>
+                <td>{{ command.amount }}&euro;</td>
                 <td>{{ command.registrationDate ? command.registrationDate|date('d-m-Y') : '' }}</td>
                 <td>{{ command.status }}</td>
                 <td>
@@ -35,7 +37,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">Aucun résultat trouvé</td>
+                <td colspan="7">Aucun résultat trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
