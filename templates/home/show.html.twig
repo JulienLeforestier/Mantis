@@ -16,22 +16,22 @@
 				<br><br>
 				Genre(s) :
 				{% for type in product.type %}
-					{{ type.title }}
+					{{ type.title }} .
 				{% endfor %}
 				<br><br>
 				Catégorie(s) :
 				{% for category in product.category %}
-					{{ category.title }}
+					{{ category.title }} .
 				{% endfor %}
 				<br><br>
 				Éditeur(s) :
 				{% for mark in product.mark %}
-					{{ mark.title }}
+					{{ mark.title }} .
 				{% endfor %}
 				<br><br>
 				Producteur(s) :
 				{% for producer in product.producer %}
-					{{ producer.title }}
+					{{ producer.title }} .
 				{% endfor %}
 				<br><br>
 				Stock : 
@@ -46,5 +46,5 @@
 
 	<a href="{{ path("cart_add", {id: product.id}) }}" class="btn btn-primary">Ajouter au panier</a>
 	<a href="{{ path('home') }}" class="btn btn-primary">Retour</a>
-	<br><br>
+	<br>
 {% endblock %}

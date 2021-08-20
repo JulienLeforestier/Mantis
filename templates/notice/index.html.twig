@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Notice index{% endblock %}
+{% block title %}Avis{% endblock %}
 
 {% block body %}
-    <h1>Notice index</h1>
+    <h1>Avis</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Comment</th>
+                <th>Commentaire</th>
                 <th>Note</th>
-                <th>Registration_date</th>
-                <th>actions</th>
+                <th>Date d'enregistrement</th>
+                <th colspan="2">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,17 +23,24 @@
                 <td>{{ notice.note }}</td>
                 <td>{{ notice.registrationDate ? notice.registrationDate|date('d-m-Y') : '' }}</td>
                 <td>
-                    <a href="{{ path('notice_show', {'id': notice.id}) }}">show</a>
-                    <a href="{{ path('notice_edit', {'id': notice.id}) }}">edit</a>
+                    <a href="{{ path('notice_show', {'id': notice.id}) }}">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('notice_edit', {'id': notice.id}) }}">
+                        <i class="fas fa-edit"></i>
+                    </a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="6">Aucun résultat trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('notice_new') }}">Create new</a>
+    <a href="{{ path('notice_new') }}" class="btn btn-primary">Nouvel éditeur</a>
+    <br>
 {% endblock %}
