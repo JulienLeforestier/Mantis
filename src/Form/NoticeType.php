@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use App\Entity\Notice;
 use App\Entity\Product;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -39,14 +40,18 @@ class NoticeType extends AbstractType
                 "class" => User::class,
                 "choice_label" => "email",
                 "multiple" => false,
-                "expanded" => true
+                "expanded" => false
             ])
             ->add('product', EntityType::class, [
                 "label" => "Produit",
                 "class" => Product::class,
                 "choice_label" => "title",
                 "multiple" => false,
-                "expanded" => true
+                "expanded" => false,
+                "query_builder" => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('p')
+                        ->orderBy('p.title', 'ASC');
+                }
             ])
         ;
     }

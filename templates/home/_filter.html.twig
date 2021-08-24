@@ -1,0 +1,22 @@
+{{ form_start(form) }}
+    <div class="container-fluid mt-2"><a class="text-center" href="{{ path("home") }}">Réinitialiser les filtres</a></div>
+    {{ form_row(form.q)}}
+    <h4>Catégories</h4>
+    {{ form_row(form.categories)}}
+    <h4>Genres</h4>
+    {{ form_row(form.types)}}
+    <h4>Éditeurs</h4>
+    {{ form_row(form.marks)}}
+    <h4>Producteurs</h4>
+    {{ form_row(form.producers)}}
+    <h4>Prix</h4>
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.min)}}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.max)}}
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Filtrer</button>
+{{ form_end(form) }}

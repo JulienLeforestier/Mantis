@@ -37,48 +37,13 @@
 </div>
 <br>
 <div class="container-fluid justify-content-center">
-	<div id="myProducts" class="row col-lg-12 justify-content-center">
+	<div id="myProducts" class="row justify-content-center">
 		<div class="col-md-2 filters">
-			<p class="lead pt-3">Catégories</p>
-			<div class="list-group">
-				{% for category in categories_list %}
-					<a class="list-group-item category" href="{{ path("home_search") }}">
-						{{ category.title }}
-					</a>
-				{% endfor %}
-			</div>
-			<p class="lead pt-3">Genres</p>
-			<div class="list-group">
-				{% for type in types_list %}
-				<a class="list-group-item type" href="{{ path("home_search") }}">
-					{{ type.title }}
-				</a>
-				{% endfor %}
-			</div>
-			<p class="lead pt-3">Éditeurs</p>
-			<div class="list-group">
-				<select class="form-control">
-					{% for mark in marks_list %}
-						<option class="list-group-item mark">
-							{{ mark.title }}
-						</option>
-					{% endfor %}
-				</select>
-			</div>
-			<p class="lead pt-3">Producteurs</p>
-			<div class="list-group">
-				<select class="form-control">
-					{% for producer in producers_list %}
-						<option class="list-group-item producer">
-							{{ producer.title }}
-						</option>
-					{% endfor %}
-				</select>
-			</div>
+			{% include 'home/_filter.html.twig' with {form: form} only %}
 			<br>
     	</div>
 		<div class="col-md-9" id="result">
-			<div class="row col-lg-12 justify-content-center">
+			<div class="row justify-content-center">
 				{% for product in products_list %}
 					<div class="col-xl-4 col-lg-12 p-1">
 						<div class="card">
@@ -112,9 +77,13 @@
 					</div>
 				{% endfor %}
 			</div>
+			<div class="mt-2">
+				{{ knp_pagination_render(products_list) }}
+			</div>
 		</div>
 	</div>
 </div>
+<hr>
 <div id="socialLinksWrapper" class="text-center">
 	Suivez-nous :
 	<a href="https://www.facebook.com/" class="fab fa-facebook" target="_blank"></a>

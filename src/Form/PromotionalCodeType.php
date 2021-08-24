@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use App\Entity\PromotionalCode;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -24,7 +25,11 @@ class PromotionalCodeType extends AbstractType
                 "class" => User::class,
                 "choice_label" => "email",
                 "multiple" => false,
-                "expanded" => true
+                "expanded" => false,
+                "query_builder" => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('p')
+                        ->orderBy('p.title', 'ASC');
+                }
             ])
         ;
     }
