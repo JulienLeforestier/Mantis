@@ -34,11 +34,19 @@
 				</li>
 			{% endif %}
 			{% if is_granted('ROLE_ADMIN') %}
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path("admin") }}">
-						<i class="fas fa-users-cog"></i>
-						Admin
-					</a>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="menuadmin" data-toggle="dropdown"><i class="fas fa-users-cog"></i>Admin</a>
+					<div class="dropdown-menu" aria-labelledby="menudamin">
+						<a class="dropdown-item" href="{{ path("user_index") }}">Membres</a>
+						<a class="dropdown-item" href="{{ path("product_index") }}">Produits</a>
+						<a class="dropdown-item" href="{{ path("command_index") }}">Commandes</a>
+						<a class="dropdown-item" href="{{ path("category_index") }}">Catégories</a>
+						<a class="dropdown-item" href="{{ path("type_index") }}">Genres</a>
+						<a class="dropdown-item" href="{{ path("mark_index") }}">Éditeurs</a>
+						<a class="dropdown-item" href="{{ path("producer_index") }}">Producteurs</a>
+						<a class="dropdown-item" href="{{ path("promotional_code_index") }}">Codes promotionnels</a>
+						<a class="dropdown-item" href="{{ path("notice_index") }}">Avis</a>
+					</div>
 				</li>
 			{% endif %}
 		</ul>
