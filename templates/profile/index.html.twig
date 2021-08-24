@@ -57,7 +57,11 @@
 					<tr>
 						<td>{{ commandLine.product.title }} x {{ commandLine.quantity }}</td>
 						<td>{{ commandLine.price }}&euro;</td>
-						<td colspan="2"></td>
+						<td colspan="2">
+							<a href="{{ path('notice_new_by_user', {'id': commandLine.product.id}) }}">
+								Laisser un avis sur ce produit
+							</a>
+						</td>
 					</tr>
 				{% endfor %}
 			{% else %}

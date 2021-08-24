@@ -19,6 +19,11 @@ class ProducerRepository extends ServiceEntityRepository
         parent::__construct($registry, Producer::class);
     }
 
+    public function findAll()
+    {
+        return $this->findBy(array(), array('title' => 'ASC'));
+    }
+    
     // /**
     //  * @return Producer[] Returns an array of Producer objects
     //  */

@@ -19,6 +19,11 @@ class MarkRepository extends ServiceEntityRepository
         parent::__construct($registry, Mark::class);
     }
 
+    public function findAll()
+    {
+        return $this->findBy(array(), array('title' => 'ASC'));
+    }
+    
     // /**
     //  * @return Mark[] Returns an array of Mark objects
     //  */

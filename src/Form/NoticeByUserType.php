@@ -2,18 +2,14 @@
 
 namespace App\Form;
 
-use App\Entity\User;
 use App\Entity\Notice;
-use App\Entity\Product;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class NoticeType extends AbstractType
+class NoticeByUserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -29,24 +25,6 @@ class NoticeType extends AbstractType
                     '★★★★' => '4',
                     '★★★★★' => '5'
                 ]
-            ])
-            ->add('registration_date', DateType::class, [
-                "widget" => "single_text",
-                "label" => "Date d'enregistrement"
-            ])
-            ->add('user', EntityType::class, [
-                "label" => "Membre",
-                "class" => User::class,
-                "choice_label" => "email",
-                "multiple" => false,
-                "expanded" => true
-            ])
-            ->add('product', EntityType::class, [
-                "label" => "Produit",
-                "class" => Product::class,
-                "choice_label" => "title",
-                "multiple" => false,
-                "expanded" => true
             ])
         ;
     }

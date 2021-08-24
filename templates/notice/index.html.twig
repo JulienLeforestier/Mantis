@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Produit</th>
                 <th>Commentaire</th>
                 <th>Note</th>
                 <th>Date d'enregistrement</th>
@@ -19,6 +20,7 @@
         {% for notice in notices %}
             <tr>
                 <td>{{ notice.id }}</td>
+                <td>{{ notice.product.title }}</td>
                 <td>{{ notice.comment }}</td>
                 <td>{{ notice.note }}</td>
                 <td>{{ notice.registrationDate ? notice.registrationDate|date('d-m-Y') : '' }}</td>
@@ -35,7 +37,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">Aucun résultat trouvé</td>
+                <td colspan="7">Aucun résultat trouvé</td>
             </tr>
         {% endfor %}
         </tbody>

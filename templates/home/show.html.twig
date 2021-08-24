@@ -38,6 +38,9 @@
 				<br><br>
 				Prix :
 				{{ product.price }}&euro;
+				<br><br>
+				Note et commentaires :
+				<a href="{{ path("notice_show_all", {id: product.id}) }}"><i class="fas fa-eye"></i></a>
 				</td>
 			</tr>
 		</tbody>
