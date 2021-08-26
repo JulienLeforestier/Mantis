@@ -28,7 +28,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('invoice', {'id': command.id}) }}"><i class="fas fa-file-pdf"></i> Imprimer une facture <i class="fas fa-file-pdf"></i></a>
+    <a href="{{ path('invoice', {'id': command.id}) }}" target="_blank"><i class="fas fa-file-pdf"></i> Imprimer une facture <i class="fas fa-file-pdf"></i></a>
     <br><br>
     {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('command_index') }}" class="btn btn-primary">Retour</a>
